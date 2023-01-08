@@ -23,8 +23,8 @@ const RegisterScreen = () => {
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
-  const userRegister = useSelector(state => state.userRegister)
-  const { error, loading, userInfo } = userRegister
+  const userRegister = useSelector((state) => state.userRegister);
+  const { error, loading, userInfo } = userRegister;
 
   useEffect(() => {
     if (userInfo) {
@@ -35,14 +35,12 @@ const RegisterScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if(password !== confirmPassword){
+    if(password != confirmPassword){
       setMessage('Password do not match')
-    } else {
-
-      dispatch(register(name, email, password));
+    }else{
 
     }
-    
+    dispatch(register(name, email, password));
   };
 
 
@@ -51,12 +49,11 @@ const RegisterScreen = () => {
     <FormContainer>
 
       <h1>Register</h1>
-      {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
 
-        <Form.Group controlId="name">
+      <Form.Group controlId="name">
           <Form.Label>Name</Form.Label>
           <Form.Control
             required
@@ -107,7 +104,7 @@ const RegisterScreen = () => {
 
       <Row className="py-3">
         <Col>
-          Have an Account alredy?
+          Have an Account alredy?{" "}
           <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
             Sign In
           </Link>

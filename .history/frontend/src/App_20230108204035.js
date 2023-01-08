@@ -17,7 +17,6 @@ function App() {
           <Routes>
             <Route path="/" exact element={<HomeScreen />} />
             <Route path="/login" element={<LoginScreen />} />
-            <Route path="/register" element={<RegisterScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path='/cart/:id?' element={<CartScreen />} />
           </Routes>

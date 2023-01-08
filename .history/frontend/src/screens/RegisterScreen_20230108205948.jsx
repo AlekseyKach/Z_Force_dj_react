@@ -23,8 +23,8 @@ const RegisterScreen = () => {
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
-  const userRegister = useSelector(state => state.userRegister)
-  const { error, loading, userInfo } = userRegister
+  const userRegister = useSelector((state) => state.userRegister);
+  const { error, loading, userInfo } = userRegister;
 
   useEffect(() => {
     if (userInfo) {
@@ -56,7 +56,7 @@ const RegisterScreen = () => {
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
 
-        <Form.Group controlId="name">
+      <Form.Group controlId="name">
           <Form.Label>Name</Form.Label>
           <Form.Control
             required
