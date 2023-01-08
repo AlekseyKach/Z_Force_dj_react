@@ -4,8 +4,6 @@ import { productDetailsSReducer, productListsSReducer } from "./reducers/product
 import { cartReducer } from "./reducers/cartReducers";
 import { userLoginReducer, userRegiserReducer } from "./reducers/userReducers";
 
-
-
 const reducer = combineReducers({
   productList: productListsSReducer,
   productDetails: productDetailsSReducer,

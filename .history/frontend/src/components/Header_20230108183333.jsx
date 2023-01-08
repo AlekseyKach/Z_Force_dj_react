@@ -14,7 +14,7 @@ const Header = () => {
   const { userInfo } = userLogin
 
   const logoutHandler = () => (
-    dispatch(logout())
+    dispatch(logout)
   )
 
   const dispatch = useDispatch()
