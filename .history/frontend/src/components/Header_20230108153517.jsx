@@ -5,7 +5,7 @@ import React from "react";
 import {LinkContainer} from 'react-router-bootstrap'
 import { Nav, Navbar,Container, NavDropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from "../actions/userActions";
+import { logout } from "../constants/userConstants";
 
 
 const Header = () => {
