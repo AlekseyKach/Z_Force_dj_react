@@ -8,6 +8,7 @@ import FormContainer from "../components/FormContainer";
 import { login } from "../actions/userActions";
 import { useNavigate } from "react-router-dom";
 
+
  
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ const LoginScreen = () => {
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
-  const userLogin = useSelector((state) => state.userLogin);
+  const userLogin = useSelector(state => state.userLogin);
   const { error, loading, userInfo } = userLogin;
 
   useEffect(() => {
