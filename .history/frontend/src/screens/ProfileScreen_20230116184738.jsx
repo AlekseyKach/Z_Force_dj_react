@@ -8,7 +8,7 @@ import { getUserDetails } from "../actions/userActions";
 import { useNavigate } from "react-router-dom";
 
 const ProfileScreen = () => {
-  const [name, setName] = useState('')
+  const [first_name, setFirst_name] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -60,14 +60,14 @@ const ProfileScreen = () => {
 
   useEffect(() => {
     if (!userInfo) {
-      navigate.push('login')
+      navigate.push('/login')
     } else {
       if (!user || !user.name || userInfo._id !== user._id) {
         // dispatch({ type: USER_UPDATE_PROFILE_RESET })
         dispatch(getUserDetails('profile'))
         // dispatch(listMyOrders())
       } else {
-        setName(user.name)
+        setFirst_name(user.name)
         setEmail(user.email)
       }
     }
@@ -107,7 +107,7 @@ const ProfileScreen = () => {
               type="name"
               placeholder="Enter Name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setFirst_name(e.target.value)}
             ></Form.Control>
           </Form.Group>
 

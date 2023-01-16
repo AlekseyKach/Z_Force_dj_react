@@ -11,7 +11,7 @@ urlpatterns = [
     path('register/' ,views.RegisterUser , name='register'),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('profile/',views.GetUserProfile ,name='user_profile'),
-    path('profile/update/',views.UpdateUserProfile ,name='user_profile_update'),
+    path('profile/update/',views.UpdateUserProfile ,name='user_profile_refresh'),
     path('',views.GetUsers ,name='users'),
 
     

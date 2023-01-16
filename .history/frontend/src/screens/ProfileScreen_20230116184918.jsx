@@ -60,7 +60,7 @@ const ProfileScreen = () => {
 
   useEffect(() => {
     if (!userInfo) {
-      navigate.push('login')
+      navigate.push('/login')
     } else {
       if (!user || !user.name || userInfo._id !== user._id) {
         // dispatch({ type: USER_UPDATE_PROFILE_RESET })

@@ -8,7 +8,7 @@ import { getUserDetails } from "../actions/userActions";
 import { useNavigate } from "react-router-dom";
 
 const ProfileScreen = () => {
-  const [name, setName] = useState('')
+  const [first_name, setFirst_name] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -30,65 +30,35 @@ const ProfileScreen = () => {
 
 
 
-  // useEffect(() => {
-  //   if (!userInfo) {
-  //     navigate('/login');
-  //   } else {
-  //     if (!user || !user.first_name) {
-  //       console.log("hello")
-  //       dispatch(getUserDetails("profile"))
-  //     } else {
-  //       setFirst_name(user.first_name)
-  //       setEmail(user.email)
-  //     }
-  //   }
-  // }, [dispatch, navigate, userInfo, user]);
-
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-
-  //   if (password !== confirmPassword) {
-  //     setMessage('Passwords do not match')
-
-  //   }
-  //   else {
-  //     console.log('update')
-
-  //   }
-
-  // };
-
   useEffect(() => {
     if (!userInfo) {
-      navigate.push('login')
+      navigate('/login');
     } else {
-      if (!user || !user.name || userInfo._id !== user._id) {
-        // dispatch({ type: USER_UPDATE_PROFILE_RESET })
-        dispatch(getUserDetails('profile'))
-        // dispatch(listMyOrders())
+      if (!user || !user.first_name) {
+        console.log(`${user}`)
+        // dispatch(getUserDetails(`profile`))
       } else {
-        setName(user.name)
+        setFirst_name(user.first_name)
         setEmail(user.email)
       }
     }
-  }, [dispatch, navigate, userInfo, user])
+  }, [dispatch, navigate, userInfo, user]);
 
   const submitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (password !== confirmPassword) {
       setMessage('Passwords do not match')
-    } else {
-      // dispatch(updateUserProfile({
-      //     'id': user._id,
-      //     'name': name,
-      //     'email': email,
-      //     'password': password
-      // }))
-      setMessage('')
+
+    }
+    else {
+      console.log('update')
+
     }
 
-  }
+  };
+
+
 
 
   return (
@@ -106,8 +76,8 @@ const ProfileScreen = () => {
               required
               type="name"
               placeholder="Enter Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={first_name}
+              onChange={(e) => setFirst_name(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
