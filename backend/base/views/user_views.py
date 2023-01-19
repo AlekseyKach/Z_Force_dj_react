@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from django.conf import settings
-from django.contrib.auth.models import update_last_login, User
+from django.contrib.auth.models import  User
 from django.contrib.auth.hashers import make_password
 from rest_framework import status
 from base.models import  User
@@ -53,37 +53,38 @@ def RegisterUser(request):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
-# update user profile ufter registeration
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])
-def UpdateUserProfile(requset):
-    user = requset.user
-    serializer = UserSerializerWithToken(user, many=False)
-
-    data = requset.data
-    data.first_name=data['name'],
-    data.username=data['email'],
-    data.email=data['email'],
-    
-    if data['password'] != '':
-        user.password = make_password(data['password'])
-
-    user.save()
-
-    return Response(serializer.data)
-
-# get the loged user
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
+# get the user is connect now
 def GetUserProfile(requset):
     user = requset.user
     serializer = UserSerializer(user, many=False)
+
     return Response(serializer.data)
 
 # get all ussers that exist
+
+
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
 def GetUsers(requset):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
+    return Response(serializer.data)
+
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def UpdateUserProfile(requset):
+    user = requset.user
+    serializer = UserSerializerWithToken(user, many=False)
+    data = requset.data
+    user.first_name = data['name']
+    user.username = data['email']
+    user.email = data['email']
+    
+    if data['password'] != '':
+        user.password = make_password(data['password'])
+    user.save()
     return Response(serializer.data)

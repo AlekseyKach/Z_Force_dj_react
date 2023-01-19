@@ -48,8 +48,8 @@ import{listProductsDetails} from '../actions/productsActions';
                         </Col>
                         <Col md={3}>
                           <ListGroup variant="flush">
-                            <ListGroup.Item>
-                              <h3> {product.name}</h3>
+                            <ListGroup.Item >
+                              <h4 > {product.name}</h4>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
@@ -71,7 +71,7 @@ import{listProductsDetails} from '../actions/productsActions';
                           </ListGroup>
                         </Col>
 
-                        <Col md={3}>
+                        <Col sm={2} md={3}>
                           <Card>
                               <ListGroup>
                                 <ListGroup.Item>

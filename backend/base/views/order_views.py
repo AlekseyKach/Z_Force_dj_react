@@ -6,7 +6,7 @@ from base.models import Product ,Order,OrderItem,ShippingAddress
 from django.contrib.auth.models import  User 
 from django.contrib.auth.hashers import make_password
 from base.serializers import  OrderSerializer
-
+from datetime import datetime
 from rest_framework import status
 
 @api_view(['POST'])
@@ -59,6 +59,17 @@ def AddOrderItem(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
+def GetMyOrders(request):
+    user = request.user
+    orders = user.order_set.all()
+    serializer= OrderSerializer(orders,many=True)
+    
+    return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def GetOrderById(requset,pk):
     try:
         user=requset.user
@@ -73,4 +84,14 @@ def GetOrderById(requset,pk):
         return Response({'detail':'order does not exist'} ,status=status.HTTP_400_BAD_REQUEST)   
     
     
-    return
+   
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def UpdateOrderToPaid(request,pk):
+    order= Order.objects.get(_id=pk)
+    
+    order.isPaid=True
+    order.paidAt=datetime.now()
+    order.save()
+    return  Response('Order was paid')
+    

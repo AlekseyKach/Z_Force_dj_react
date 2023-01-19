@@ -14,20 +14,19 @@ import ProfileScreen from "./screens/ProfileScreen";
 
 
 
-
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
       <Header />
-      <main className="py-3">
+      <main className="py-3" >
         <Container>
           <Routes>
             <Route path="/" exact element={<HomeScreen />} />
             <Route path="/login" exact element={<LoginScreen  />} />
             <Route path="/register" element={<RegisterScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
+
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/shipping" exact element={<ShippingScreen  />} />
             <Route path="/placeorder" exact element={<PlaceOrderScreen  />} />
